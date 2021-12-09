@@ -1,8 +1,66 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>-->
+
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--    <input id="input_data" type="text">-->
+<!--    <input value="제출" type="button" onclick="send_input()">-->
+
+<!--    <h1 id="text">Hello World!</h1>-->
+
+<!--</body>-->
+
+<!--<script>-->
+
+<!--    function send_input() {-->
+<!--        axios.post('/accounts/hello_world/', {-->
+<!--            input_data: document.getElementById('input_data').value,-->
+<!--          })-->
+<!--          .then(function (response) {-->
+<!--            // POST 요청이 성공했을 경우 어떤 javascript 가 구동되어야 하는지-->
+<!--            console.log(response);-->
+
+<!--            document.getElementById('text').innerHTML = response.data['message']; // Return text-->
+
+<!--          })-->
+<!--          .catch(function (error) {-->
+<!--            console.log(error);-->
+<!--          });-->
+<!--    }-->
+
+
+<!--    &lt;!&ndash;  서버 호출  &ndash;&gt;-->
+<!--    axios.get('/accounts/hello_world/')-->
+<!--      .then(function (response) {-->
+<!--        // handle success-->
+<!--        console.log(response);-->
+
+<!--        // 성공했을 경우 어떤 javascript 작업을 할지-->
+<!--        document.getElementById('text').innerHTML = response.data['message']; // Return text-->
+
+<!--      })-->
+<!--      .catch(function (error) {-->
+<!--        // handle error-->
+<!--        console.log(error);-->
+<!--      })-->
+<!--      .then(function () {-->
+<!--        // always executed-->
+<!--      });-->
+<!--</script>-->
+
+<!--</html>-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <title>Title</title>
 </head>
 <body>
@@ -10,25 +68,27 @@
     <input id="input_data" type="text">
     <input value="제출" type="button" onclick="send_input()">
 
-    <h1 id="text">된다 2</h1>
+    <h1 id="text">Hello World!</h1>
+
 </body>
 
 <script>
 
-    function send_input(){
-    axios.post('/accounts/hello_world/', {
-        firstName: 'Fred',
-        lastName: 'Flintstone'
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    function send_input() {
+        axios.post('/accounts/hello_world/', {
+            input_data: document.getElementById('input_data').value,
+          })
+          .then(function (response) {
+            // POST 요청이 성공했을 경우 어떤 javascript 가 구동되어야 하는지
+            console.log(response);
+
+            document.getElementById('text').innerHTML = response.data['message']; // Return text
+
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     }
-
-
 
 
     <!--  서버 호출  -->
@@ -37,8 +97,7 @@
         // handle success
         console.log(response);
 
-        // 성공했을 경우 javascript 작업을 할지
-
+        // 성공했을 경우 어떤 javascript 작업을 할지
         document.getElementById('text').innerHTML = response.data['message']; // Return text
 
       })

@@ -9,6 +9,10 @@ def hello_world_template(request):
     return render(request, 'accountapp/hello_world.html')
 
 # 로직 처리부분
-@api_view()
+@api_view(['GET', 'POST'])
+
 def hello_world(request):
-    return Response({'message':'Return text'})
+    if request.method == "POST":
+        input_data = request.data.get('input_data')
+        return Response({'message': input_data})
+    return Response({'message':'Return text2'})
