@@ -1,22 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+{% extends 'base.html' %}
+{% block content %}
 
-    <title>Title</title>
-</head>
 <body>
-
     <input id="input_data" type="text">
     <input value="제출" type="button" onclick="send_input()">
 
     <h1 id="text">Hello World!</h1>
-
 </body>
 
 <script>
-
     function send_input() {
         axios.post('/accounts/hello_world/', {
             input_data: document.getElementById('input_data').value,
@@ -32,7 +24,6 @@
             console.log(error);
           });
     }
-
 
     <!--  서버 호출  -->
     axios.get('/accounts/hello_world/')
@@ -53,4 +44,4 @@
       });
 </script>
 
-</html>
+{% endblock %}
