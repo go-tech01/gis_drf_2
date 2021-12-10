@@ -1,12 +1,14 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render
 
 # Create your views here.
 from rest_framework.decorators import api_view
+from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
 
 # UI 설정부분
 from accountapp.models import NewModel
-from accountapp.serializes import NewModelSerializer
+from accountapp.serializes import NewModelSerializer, UserSerializer
 
 
 def hello_world_template(request):
@@ -29,3 +31,9 @@ def hello_world(request):
 
 def AccountCreateTemplate(request):
     return render(request, 'accountapp/create.html')
+
+class AccountCreateAPIView(CreateAPIView):
+    queryset = User.objects.all()          # model
+    serializer_class = UserSerializer      # form class
+    permission_classes = []                # 누구나 가입할 수 있도록
+
