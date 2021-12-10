@@ -22,8 +22,12 @@ axios.get('/accounts/hello_world/')
     console.log(response);
 
     // 성공했을 경우 어떤 javascript 작업을 할지
-    document.getElementById('text').innerHTML = response.data['message']; // Return text
-
+    for (let i=0; i < response.data.length; i++){
+        document.getElementById('new_model_list').innerHTML
+        += "<h5>" + response.data[i]['text'] + "</h5>";  // Return text
+        document.getElementById('new_model_list').innerHTML
+        += "<p>" + response.data[i]['created_at'] + "</p>";  // Return created_at
+    }
   })
   .catch(function (error) {
     // handle error
