@@ -1,8 +1,7 @@
 from django.urls import path
 from rest_framework.authtoken import views
 
-from accountapp.serializes import ListUsers
-from accountapp.views import hello_world, hello_world_template, AccountCreateTemplate, AccountCreateAPIView
+from accountapp.views import hello_world, hello_world_template, AccountCreateTemplate, AccountCreateAPIView, ListUsers
 
 app_name = 'accountapp'
 
