@@ -35,5 +35,5 @@ def AccountCreateTemplate(request):
 class AccountCreateAPIView(CreateAPIView):
     queryset = User.objects.all()          # model
     serializer_class = UserSerializer      # form class
-    permission_classes = []                # 누구나 가입할 수 있도록
+    permission_classes = []                # 권한, 누구나 가입할 수 있도록
 
