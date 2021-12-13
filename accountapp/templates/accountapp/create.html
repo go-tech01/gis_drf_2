@@ -2,16 +2,18 @@
 {% load static %}
 {% block content %}
 
-    <div class="my-5">
-        <!-- ID -->
-        <input type="text" >
-        <!-- PASSWORD  -->
-        <input type="password" >
+  <div>
+    <div id="alert_box"></div>
+
+    <!--  ID  -->
+    <input id="username" type="text">
+    <!--  PASSWORD  -->
+    <input id="password" type="password">
 <!--        &lt;!&ndash; PASSWORD  CONFIG &ndash;&gt;-->
 <!--        <input type="password">-->
 
-        <input type="submit" class="btn btn-dark rounded-pill px-5" onclick="send_input()">
-    </div>
+    <input type="submit" class="btn btn-dark rounded-pill px-5" onclick="send_input()">
+  </div>
 
 <script src="{% static 'js/create.js' %}"></script>
 
