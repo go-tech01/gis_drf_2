@@ -8,7 +8,11 @@ function send_input() {
             console.log(response);
             document.getElementById('alert_box').innerHTML
                 = "<div class='btn btn-primary rounded-pill px-5'>로그인이 성공했습니다</div>";
-            window.location.href = '/accounts/hello_world_template/';
+            // Teken 수령 후 쿠키 생성하기
+            document.cookie='drf_token=Token '+response.data['token'];    // 이건 테스트, 실제로 이렇게 하면 안됨, 보안에 취약함
+//            window.location.href = '/accounts/hello_world_template/';
+
+
         })
         .catch(function (error) {
             // 실패했을 경우
