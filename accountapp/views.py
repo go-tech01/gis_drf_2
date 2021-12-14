@@ -6,7 +6,8 @@ from django.views.generic import TemplateView
 from rest_framework import authentication, permissions
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import api_view
-from rest_framework.generics import CreateAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView
+from rest_framework.generics import CreateAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView, \
+    RetrieveUpdateDestroyAPIView
 from rest_framework.response import Response
 
 # UI 설정부분
@@ -59,25 +60,31 @@ def AccountLoginView(request):
 class AccountRetrieveTemplateView(TemplateView):
     template_name = 'accountapp/retrieve.html'
 
-class AccountRetrieveAPIView(RetrieveAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserWithoutPasswordSerializer
-    permission_classes = [permissions.AllowAny]
-    authentication_classes = [TokenAuthentication]
+# class AccountRetrieveAPIView(RetrieveAPIView):
+#     queryset = User.objects.all()
+#     serializer_class = UserWithoutPasswordSerializer
+#     permission_classes = [permissions.AllowAny]
+#     authentication_classes = [TokenAuthentication]
 
 class AccountUpdateTemplateView(TemplateView):
     template_name = 'accountapp/update.html'
 
-class AccountUpdateAPIView(UpdateAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserWithoutPasswordSerializer   # form
-    permission_classes = [IsOwner]
-    authentication_classes = [TokenAuthentication]
+# class AccountUpdateAPIView(UpdateAPIView):
+#     queryset = User.objects.all()
+#     serializer_class = UserWithoutPasswordSerializer   # form
+#     permission_classes = [IsOwner]
+#     authentication_classes = [TokenAuthentication]
 
 class AccountDestroyTemplateView(TemplateView):
     template_name = 'accountapp/destroy.html'
 
-class AccountDestroyAPIView(DestroyAPIView):
+# class AccountDestroyAPIView(DestroyAPIView):
+#     queryset = User.objects.all()
+#     permission_classes = [IsOwner]
+#     authentication_classes = [TokenAuthentication]
+
+class AccountRUDView(RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
+    serializer_class = UserWithoutPasswordSerializer
     permission_classes = [IsOwner]
     authentication_classes = [TokenAuthentication]
