@@ -73,6 +73,9 @@ class AccountUpdateAPIView(UpdateAPIView):
     permission_classes = []
     authentication_classes = [TokenAuthentication]
 
+class AccountDestroyTemplateView(TemplateView):
+    template_name = 'accountapp/destroy.html'
+
 class AccountDestroyAPIView(DestroyAPIView):
     queryset = User.objects.all()
     permission_classes = []
