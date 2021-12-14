@@ -64,6 +64,9 @@ class AccountRetrieveAPIView(RetrieveAPIView):
     permission_classes = [permissions.AllowAny]
     authentication_classes = [TokenAuthentication]
 
+class AccountUpdateTemplateView(TemplateView):
+    template_name = 'accountapp/update.html'
+
 class AccountUpdateAPIView(UpdateAPIView):
     queryset = User.objects.all()
     serializer_class = UserWithoutPasswordSerializer   # form
