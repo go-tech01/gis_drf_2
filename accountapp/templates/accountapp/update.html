@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
   <div>
+      <div id="alert_box"></div>
       <div class="my-5">
         <h2>Update Account</h2>
       </div>
@@ -9,7 +10,8 @@
         <form>
           <input id="username" type="text">
           <input id="email" type="email">
-          <input type="submit" class="btn btn-dark rounded-pill px-5">
+          <input type="submit" onclick="update_account('{{ view.kwargs.pk }}')"
+                 class="btn btn-dark rounded-pill px-5">
         </form>
       </div>
   </div>

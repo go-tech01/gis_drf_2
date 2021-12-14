@@ -72,3 +72,7 @@ class AccountUpdateAPIView(UpdateAPIView):
     serializer_class = UserWithoutPasswordSerializer   # form
     permission_classes = []
     authentication_classes = [TokenAuthentication]
+
+
+
+# class AccountDestroyAPIView(DestroyAPIView):
