@@ -6,7 +6,7 @@ from django.views.generic import TemplateView
 from rest_framework import authentication, permissions
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import api_view
-from rest_framework.generics import CreateAPIView, RetrieveAPIView, UpdateAPIView
+from rest_framework.generics import CreateAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView
 from rest_framework.response import Response
 
 # UI 설정부분
@@ -73,6 +73,7 @@ class AccountUpdateAPIView(UpdateAPIView):
     permission_classes = []
     authentication_classes = [TokenAuthentication]
 
-
-
-# class AccountDestroyAPIView(DestroyAPIView):
+class AccountDestroyAPIView(DestroyAPIView):
+    queryset = User.objects.all()
+    permission_classes = []
+    authentication_classes = [TokenAuthentication]
