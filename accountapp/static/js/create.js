@@ -1,5 +1,5 @@
 function send_input() {
-    axios.post('/accounts/create/', {
+    axios.post('/accounts/', {
         username: document.getElementById('username').value,
         password: document.getElementById('password').value,
     })

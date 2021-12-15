@@ -2,7 +2,7 @@ function delete_account(pk) {
 //    axios.delete('/accounts/delete/' + pk)
     axios({
         method: 'delete',
-        url:'/accounts/delete/' + pk,
+        url:'/accounts/' + pk,
         headers: {
             Authorization: decodeURIComponent(getCookie('drf_token')),
         }
@@ -10,7 +10,7 @@ function delete_account(pk) {
         .then(function (response) {
             // handle success
             console.log(response);
-            window.location.href = '/accounts/logout/';
+            window.location.href = '/accounts/logout_template/';
         })
         .catch(function (error) {
             // handle error
