@@ -22,5 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path('api-auth/', include('rest_framework.urls')),
     path('accounts/', include('accountapp.urls')),
+    path('profiles/', include('profileapp.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
