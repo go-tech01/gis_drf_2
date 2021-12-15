@@ -10,3 +10,5 @@ class ProfileCreateAPIView(CreateAPIView):
     serializer_class = ProfileSerializer
     permission_classes = [permissions.IsAuthenticated]
     authentication_classes = [TokenAuthentication]
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
