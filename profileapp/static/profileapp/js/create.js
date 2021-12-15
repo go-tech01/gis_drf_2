@@ -14,10 +14,7 @@ function send_input() {
         .then(function (response) {
             // 성공했을 경우
             console.log(response);
-            // 완성된 이후 해당 유저의 detail 페이지로 리다이렉트
-//            window.location.href = 'accounts/retrieve/'+pk;
-            document.getElementById('alert_box').innerHTML
-                = "<div class='btn btn-primary rounded-pill px-5'>프로필 생성에 성공했습니다</div>"
+            window.location.href = 'accounts/retrieve_template/'+response.data['owner']['id'];
         })
         .catch(function (error) {
             // 실패했을 경우
