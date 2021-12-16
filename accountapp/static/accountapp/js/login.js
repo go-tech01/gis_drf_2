@@ -28,7 +28,7 @@ function send_input() {
             console.log(response);
 //            document.getElementById('alert_box').innerHTML
 //                = "<div class='btn btn-primary rounded-pill px-5'>로그인이 성공했습니다</div>";
-            // Token 수령 후 쿠키 생성
+            // Token 수령 후 쿠키 생성 - 위험한 방법
             setCookie('drf_token', 'Token ' + response.data['token']);
             // succes.html
             window.location.href = '/accounts/hello_world_template/'

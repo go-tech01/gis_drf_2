@@ -7,8 +7,19 @@ function getCookie(name) {
 
 var check = getCookie('drf_token');
 
+// get 기반 token 주인의 pk 획득
+
+axios({
+    method: 'get',
+    url: '/accounts/',
+
+})
+
 if (check !== undefined) {
-    document.getElementById('signup_button').innerHTML = "";
+    document.getElementById('signup_button').innerHTML =
+        "<a href=\"/accounts/retrieve_template/\">\n" +
+        "                MyPage\n" +
+        "            </a>";
     document.getElementById('login_button').innerHTML =
         "<a href=\"/accounts/logout_template/\">\n" +
         "                Logout\n" +
