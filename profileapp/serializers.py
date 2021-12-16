@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 
-from accountapp.serializes import UserWithoutPasswordSerializer
+# from accountapp.serializes import UserWithoutPasswordSerializer
 from profileapp.models import Profile
 
 # class ProfileSerializer(ModelSerializer):
