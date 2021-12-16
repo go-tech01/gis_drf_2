@@ -5,7 +5,7 @@ function initialize(pk) {
             console.log(response);
             document.getElementById('nickname').value = response.data['nickname'];
             document.getElementById('message').value = response.data['message'];
-//            이미지
+//            이미지도 가져와야 함
         })
         .catch(function (error) {
             // handle error
