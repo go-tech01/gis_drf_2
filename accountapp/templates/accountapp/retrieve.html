@@ -3,14 +3,17 @@
 {% block content %}
 <div>
     <!-- Profile 들어가는 부분 -->
-    <div>
-        <h1 id="username"></h1>
-        <p id="date_joined"></p>
+    <div class="my-5">
+        <img src=""
+             id="image"
+             style="width: 13rem; height:13rem; border-radius: 20rem; object-fit: cover;"
+             alt="">
+        <h1 id="nickname"></h1>
+        <h4 id="message"></h4>
     </div>
     <!-- 본인 작성한 게시글 리스트 들어갈 부분 -->
     <div></div>
 </div>
-
 <script src="{% static 'accountapp/js/retrieve.js' %}"></script>
 <script>initialize("{{ view.kwargs.pk }}");</script>
 {% endblock %}
