@@ -4,6 +4,7 @@ from rest_framework import permissions
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.generics import CreateAPIView, UpdateAPIView
 from profileapp.models import Profile
+from profileapp.permission import IsProfileOwner
 from profileapp.serializers import ProfileSerializer
 
 class ProfileCreateTemplateView(TemplateView):
@@ -20,5 +21,5 @@ class ProfileCreateAPIView(CreateAPIView):
 class ProfileUpdateAPIView(UpdateAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
-    permission_classes = []
+    permission_classes = [IsProfileOwner]
     authentication_classes = [TokenAuthentication]

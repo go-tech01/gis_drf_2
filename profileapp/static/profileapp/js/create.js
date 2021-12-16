@@ -14,7 +14,8 @@ function send_input() {
         .then(function (response) {
             // 성공했을 경우
             console.log(response);
-            window.location.href = 'accounts/retrieve_template/'+response.data['owner']['id'];
+//            window.location.href = '/accounts/retrieve_template/'+response.data['owner']['id'];
+            window.location.href = '/accounts/retrieve_template/'+response.data['owner_id'];
         })
         .catch(function (error) {
             // 실패했을 경우
