@@ -31,3 +31,5 @@ class ArticleRUDAPIView(RetrieveUpdateDestroyAPIView):
     serializer_class = ArticleSerializer
     permission_classes = [IsArticleOwner]
     authentication_classes = [TokenAuthentication]
+    def perform_update(self, serializer):
+        serializer.save(writer=self.request.user)
