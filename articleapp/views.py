@@ -8,7 +8,7 @@ from articleapp.models import Article
 from articleapp.permissions import IsArticleOwner
 from articleapp.serializers import ArticleSerializer
 
-class ArticleTemplateView(TemplateView):
+class ArticleCreateTemplateView(TemplateView):
     template_name = 'articleapp/create.html'
 
 class ArticleCreateAPIView(CreateAPIView):
@@ -17,6 +17,14 @@ class ArticleCreateAPIView(CreateAPIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [TokenAuthentication]
 
+class ArticleRetrieveTemplateView(TemplateView):
+    template_name = 'articleapp/retrieve.html'
+
+class ArticleUpdateTemplateView(TemplateView):
+    template_name = 'articleapp/update.html'
+
+class ArticleDestroyTemplateView(TemplateView):
+    template_name = 'articleapp/destroy.html'
 
 class ArticleRUDAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Article.objects.all()

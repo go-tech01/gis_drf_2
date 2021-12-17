@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div style="max-width: 400px; margin: auto;">
+    <div class="my-5">
+        <h1 id="title"></h1>
+        <h4 id="created_at"></h4>
+        <img src=""
+             id="image"
+             style="border-radius: 2rem; width: 100%;"
+             alt="">
+    </div>
+    <div id="content"></div>
+    <!-- 만약 페이지가 본인이 작성한 게시글이 맞다면 수정 및 삭제 페이지 시각화 -->
+    <div id="owner_section"></div>
+</div>
+<script src="{% static 'articleapp/js/retrieve.js' %}"></script>
+<script>initialize("{{ view.kwargs.pk }}");</script>
+{% endblock %}
