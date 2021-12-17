@@ -8,6 +8,9 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+from image_processing import thumbnail
+
+
 class Profile(models.Model):
     owner = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     nickname = models.CharField(max_length=50, null=False)
@@ -20,16 +23,7 @@ class Profile(models.Model):
         super().save(*args, **kwargs)
     def generate_thumbnail(self):
         if self.image:
-            # pixel = settings.TUUMBNAIL_SIZE
-            img = Image.open(self.image)
-            width, height = img.size
-            ratio = height/width
-            pixel = min(250, width)
-            img = img.convert('RGB')
-            img.thumbnail((pixel, round(pixel*ratio)))
-            output = BytesIO()
-            img.save(output, format='JPEG', quality=95)
-            output.seek(0)
+            output = thumbnail.generate_thumbnail(self.image)
             self.thumb = InMemoryUploadedFile(output, "ImageField", self.image.name,
                                               'image/jpeg', sys.getsizeof(output), None)
 

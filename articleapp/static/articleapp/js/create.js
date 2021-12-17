@@ -15,7 +15,7 @@ function send_input() {
             // 성공했을 경우
             console.log(response);
             // 완성된 이후 해당 게시글 페이지로 돌아가기
-            doc3ument.getElementById('alert_box').innerHTML
+            document.getElementById('alert_box').innerHTML
                 = "<div class='btn btn-primary rounded-pill px-5'>게시글 작성에 성공했습니다</div>"
 //            window.location.href = '/articles/retrieve_template/'+response.data['id'];
         })
