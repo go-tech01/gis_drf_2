@@ -45,7 +45,7 @@ function update_article(pk) {
         .then(function (response) {
             // handle success
             console.log(response);
-            window.location.href = '/article/retrieve_template/'+response.data['id'];
+            window.location.href = '/articles/retrieve_template/'+response.data['id'];
         })
         .catch(function (error) {
             // handle error
