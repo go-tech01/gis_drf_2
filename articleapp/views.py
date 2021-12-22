@@ -2,8 +2,9 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 
 from rest_framework.authentication import TokenAuthentication
-from rest_framework.generics import CreateAPIView, RetrieveAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.generics import CreateAPIView, RetrieveAPIView, RetrieveUpdateDestroyAPIView, ListAPIView, \
+    ListCreateAPIView
+from rest_framework.permissions import IsAuthenticated, AllowAny, IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 
 from articleapp.models import Article
@@ -14,24 +15,32 @@ from articleapp.serializers import ArticleSerializer
 class ArticleCreateTemplateView(TemplateView):
     template_name = 'articleapp/create.html'
 
-class ArticleCreateAPIView(CreateAPIView):
-    queryset = Article.objects.all()
-    serializer_class = ArticleSerializer
-    permission_classes = [IsAuthenticated]
-    authentication_classes = [TokenAuthentication]
-    def perform_create(self, serializer):
-        serializer.save(writer=self.request.user)
+# class ArticleCreateAPIView(CreateAPIView):
+#     queryset = Article.objects.all()
+#     serializer_class = ArticleSerializer
+#     permission_classes = [IsAuthenticated]
+#     authentication_classes = [TokenAuthentication]
+#     def perform_create(self, serializer):
+#         serializer.save(writer=self.request.user)
 
 class ArticleListTemplateView(TemplateView):
     template_name = 'articleapp/list.html'
 
-class ArticleListAPIView(ListAPIView):
+# class ArticleListAPIView(ListAPIView):
+#     queryset = Article.objects.all()
+#     serializer_class = ArticleSerializer
+#     permission_classes = [AllowAny]
+#     authentication_classes = [TokenAuthentication]
+#     pagination_class = CustomPageNumberPagination
+
+class ArticleListCreateAPIView(ListCreateAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     authentication_classes = [TokenAuthentication]
     pagination_class = CustomPageNumberPagination
-
+    def perform_create(self, serializer):
+        serializer.save(writer=self.request.user)
 
 class ArticleRetrieveTemplateView(TemplateView):
     template_name = 'articleapp/retrieve.html'
