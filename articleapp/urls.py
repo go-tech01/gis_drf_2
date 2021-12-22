@@ -1,13 +1,13 @@
 from django.urls import path
 from articleapp.views import ArticleCreateAPIView, ArticleRUDAPIView, ArticleRetrieveTemplateView, \
-    ArticleCreateTemplateView, ArticleUpdateTemplateView, ArticleDestroyTemplateView, MagicGridTemplateView, \
+    ArticleCreateTemplateView, ArticleUpdateTemplateView, ArticleDestroyTemplateView, ArticleListTemplateView, \
     ArticleListAPIView
 
 app_name = 'articleapp'
 
 urlpatterns = [
     path('create_template/', ArticleCreateTemplateView.as_view(), name='create_template'),
-    path('magic_grid/', MagicGridTemplateView.as_view(), name='magic_grid'),
+    path('list_template/', ArticleListTemplateView.as_view(), name='list_template'),
     path('', ArticleCreateAPIView.as_view(), name='create'),
     path('list/', ArticleListAPIView.as_view(), name='list'),
 
