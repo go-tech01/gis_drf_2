@@ -89,3 +89,4 @@ staticfiles/
 
 db.sqlite3
 
+*.pem
