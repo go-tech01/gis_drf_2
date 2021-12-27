@@ -2,7 +2,7 @@ FROM python:3.9.0
 
 WORKDIR /home/
 
-RUN echo 'a-01'
+RUN echo 'a-02'
 
 RUN git clone https://github.com/go-tech01/gis_drf_2.git
 
