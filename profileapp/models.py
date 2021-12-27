@@ -19,6 +19,10 @@ class Profile(models.Model):
     thumb = models.ImageField(upload_to='profile/thumbnail', null=True)
     message = models.CharField(max_length=255, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        generate_thumbnail_celery_lag.delay(self.pk)
+
     # def save(self, *args, **kwargs):
     #     self.generate_thumbnail()
     #     super().save(*args, **kwargs)
@@ -28,6 +32,6 @@ class Profile(models.Model):
     #         self.thumb = InMemoryUploadedFile(output, "ImageField", self.image.name,
     #                                           'image/jpeg', sys.getsizeof(output), None)
 
-@receiver(post_save, sender=Profile)
-def async_generate_thumbnail(sender, instance=None, created=False, **kwargs):
-    generate_thumbnail_celery_lag.delay(instance.pk)
+# @receiver(post_save, sender=Profile)
+# def async_generate_thumbnail(sender, instance=None, created=False, **kwargs):
+#     generate_thumbnail_celery_lag.delay(instance.pk)
